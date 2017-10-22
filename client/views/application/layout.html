@@ -1,0 +1,58 @@
+<template name="layout">
+    <section class="{{#if currentUser}} row authenticated {{else}} not-authenticated {{/if}}" id="wrapp">
+        <main id="main_content" class="{{#if currentUser}} col m10 {{/if}}">
+            <header id="page_header" class="red darken-1">
+                <div class="row">
+                    <div class="col">
+                        <a href="{{pathFor 'mainPage'}}" class="site-name">Let's Ride!</a>
+                    </div>
+                    {{#if currentUser}}
+                    <div class="col-md-8">
+                        <ul class="m_menu">
+                            <li class="m_menu-item"><a href="#" class="m_menu-item_content">Правила портала</a></li>
+                        </ul>
+                    </div>
+                    {{else}}
+                    <div class="col-md-8">
+                        <ul class="m_menu">
+                            <li class="m_menu-item"><a href="#" class="m_menu-item_content">О проекте</a></li>
+                            <li class="m_menu-item"><a href="#" class="m_menu-item_content">Блог</a></li>
+                            <li class="m_menu-item"><a href="#" class="m_menu-item_content">Мобильное приложение</a></li>
+                        </ul>
+                    </div>
+                    {{/if}}
+                </div>
+            </header>
+            <section id="page_content">
+                {{>yield}}
+            </section>
+        </main>
+        {{#if currentUser}}
+        <aside id="right_bar" class="col-md-2">
+            <div class="user" style="background-image: url(https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg);">
+                <div class="user-photo_wrapp">
+                    <img src="https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg" alt="user" class="user-photo">
+                </div>
+                <div class="user-info">
+                    <div class="user-info_name">{{currentUser.username}} <a href="{{pathFor 'editProfile'}}" class="user-btn icon-edit"></a><button id="logout-btn" class="user-btn icon-exit"></button></div>
+                    <div class="user-info_sign">Ride your life!</div>
+                </div>
+            </div>
+            <ul class="u_menu">
+                <li class="u_menu-item">
+                    <a href="{{pathFor 'ridesList'}}" class="u_menu-item_content"><i class="icon-helmet u_menu-item_content_icon"></i>Мои покатухи</a> <a href="#addRideModal" class="u_menu-item_add_link modal-trigger">+</a>
+                </li> 
+                <li class="u_menu-item">
+                    <a href="{{pathFor 'eventsList'}}" class="u_menu-item_content"><i class="icon-calendar u_menu-item_content_icon"></i>Мои ивенты</a> <a href="#" class="u_menu-item_add_link">+</a>
+                </li>
+                <li class="u_menu-item">
+                    <a href="{{pathFor 'community'}}" class="u_menu-item_content"><i class="icon-users u_menu-item_content_icon"></i>Сообщество</a>
+                </li>
+            </ul>
+        </aside>
+        {{/if}}
+    </section>
+    {{#if currentUser}}
+        {{>addRide}}
+    {{/if}}
+</template>

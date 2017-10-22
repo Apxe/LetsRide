@@ -1,0 +1,25 @@
+<template name="ridesItem">
+    <div class="col-md-6">
+        <figure class="card horizontal">
+            <div class="card-image">
+                <img src="{{image.link}}">
+            </div>
+            <div class="card-stacked">
+                <div class="card-content">
+                    <span class="card-title">{{title}}</span>
+                    <p>{{route}}</p>
+                </div>
+                <div class="card-action">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <a href="{{pathFor 'ridePage'}}">Смотреть подробнее</a>
+                        </div>
+                        <div class="col-md-2 right-align">
+                            <a href="#" class="ride-delete_btn grey-text text-lighten-1" style="margin: 0">У</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </figure>
+    </div>
+</template>

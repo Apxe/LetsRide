@@ -1,0 +1,74 @@
+<template name="addRide">
+    <div id="addRideModal" class="modal bottom-sheet">
+        <h4 class="modal-title cyan darken-1 white-text">Добавить покатуху</h4>
+        <div class="modal-content">
+            <form action="" id="ride_form" class="ride_form">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="input-field">
+                            <input id="ride-title" type="text" name="title">
+                            <label for="ride-title" class="form-control_label">Название</label>
+                        </div>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>jpg</span>
+                                <input type="file" id="ride_img" name="ride_img">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Изображение">
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <input id="ride-start" type="text" name="start">
+                            <label for="ride-start">Дата и время старта</label>
+                        </div>
+                        <div class="input-field">
+                            <textarea id="ride-desc" name="description" class="materialize-textarea" rows="6"></textarea>
+                            <label for="ride-desc" class="form-control_label">Описание</label>
+                        </div>
+                        <div class="input-field">
+                            <textarea id="ride-requirements" name="requirements" class="materialize-textarea" rows="6"></textarea>
+                            <label for="ride-requirements">Требования к участникам</label>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="input-field">
+                            <input id="ride-route" type="text" name="route" class="form-control">
+                            <label for="ride-route" class="form-control_label">Маршрут</label>
+                        </div>
+                        <div class="file-field input-field">
+                            <div class="btn">
+                                <span>Kml</span>
+                                <input type="file">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text" placeholder="Файл маршрута">
+                            </div>
+                        </div>
+                        <div class="input-field">
+                            <input id="ride-coordinates" type="text" disabled name="coordinates">
+                            <label for="ride-coordinates">Координаты места сбора</label>
+                        </div>
+                        <div class="input-field" style="height: 210px;">
+                            {{> googleMap name="rideCoordinates" options=rideCoordinatesOptions}}
+                        </div>
+                    </div>
+                </div>
+                <button class="btn-large" type="submit">Добавить</button>
+            </form>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function(){
+            $('#ride-start').mask('99/99/9999 99:99', {
+                completed: function() {
+                    $('#ride-start').attr('data-empty', false);
+                }
+            });
+
+            $('.form-control').on('input', function (e) {
+                $(e.currentTarget).attr('data-empty', !e.currentTarget.value);
+            });
+        })
+    </script>
+</template>

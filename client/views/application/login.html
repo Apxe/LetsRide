@@ -1,0 +1,21 @@
+<template name="login">
+    <div class="login_form-wrapp"> 
+        <form id="login_form" class="login_form z-depth-2">
+            <div class="input-field">
+                <input id="login-email" type="email" name="email" class="validate" >
+                <label for="login-email">E-mail</label>
+            </div>
+            <div class="input-field">
+                <input id="login-password" type="password" name="password" class="validate" >
+                <label for="login-password">Пароль</label>
+            </div>
+            <div class="center-align">
+                <button type="submit" id="login-btn" class="waves-effect waves-light btn-large">Войти</button>
+            </div>
+            <div class="login_form-separator">или</div>
+            <div class="center-align">
+                <a href="{{pathFor 'registration'}}" class="waves-effect waves-light btn-large cyan darken-1">Зарегистрироваться</a>
+            </div>
+        </form>
+    </div>
+</template>

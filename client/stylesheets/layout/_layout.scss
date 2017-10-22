@@ -1,0 +1,30 @@
+#wrapp{
+    height: 100vh;
+    overflow: hidden;
+    margin: 0;
+    &.not-authenticated{
+        #page_content{
+            padding: 0;
+        }
+    }
+}
+#right_bar{
+    background-color: #f1f1f1;
+    padding: 0;
+    height: 100vh;
+}
+#page_header{
+    color: #fff;
+    height: 86px;
+    padding: 0 18px;
+}
+#main_content{
+    height: 100vh;
+    padding: 0;
+}
+#page_content{
+    overflow: hidden;
+    overflow-y: auto;
+    height: calc(100vh - 86px);
+    padding: 18px;
+}

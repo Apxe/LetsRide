@@ -1,0 +1,19 @@
+<template name="editRide">
+    <form action="" id="ride_form" class="ride_form">
+        <fieldset class="form-group">
+            <input id="ride-title" type="text" name="title" class="form-control">
+            <label for="ride-title" class="form-control_label">Название</label>
+        </fieldset>
+        <fieldset class="form-group">
+            <input id="ride-route" type="text" name="route" class="form-control">
+            <label for="ride-route" class="form-control_label">Маршрут</label>
+        </fieldset>
+        <fieldset class="form-group">
+            <textarea id="ride-desc" class="form-control" rows="6"></textarea>
+            <label for="ride-desc" class="form-control_label">Описание</label>
+        </fieldset>
+        <div class="buttons">
+            <button class="btn btn-default" type="submit">Сохранить</button>
+        </div>
+    </form>
+</template>

@@ -1,0 +1,21 @@
+<template name="mainPage">
+    <div class="map_wrapp">
+        {{> googleMap name="mainMap" options=mainMapOptions}}
+    </div>
+    <div id="rideQViewModal" class="modal modal-fixed-footer">
+        <h4 class="modal-title cyan darken-1 white-text"></h4>
+        <div class="modal-content">
+            
+        </div>
+        <div class="modal-footer">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="ride_modal-start"></div>
+                </div>
+                <div class="col-md-8">
+                    <a href="#" class="modal-action modal-close waves-effect btn-flat">Подать заявку</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</template>

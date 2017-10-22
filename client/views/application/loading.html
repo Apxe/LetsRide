@@ -1,0 +1,43 @@
+<template name="loading">
+    <div class="cont">
+        <ul class="spokes">
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+            <li></li>
+        </ul>
+    </div>
+    <script>
+    $(document).ready(function(){
+    
+    var angle = 360/$(".spokes li").length; // Evenly Distribute the spokes
+
+        var i = 0;
+        while (i < 361){
+
+            $(".spokes li").each(function(){
+
+                $(this).css("transform","rotate("+i+"deg)");
+                i+=angle;
+            });
+        }
+
+    });
+    </script>
+</template>

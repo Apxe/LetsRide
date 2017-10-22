@@ -1,0 +1,44 @@
+.user{
+    background-size: cover;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding: 16px;
+    position: relative;
+}
+    .user-photo{
+        border-radius: 50%;
+        width: 54px;
+        height: 54px;
+        display: block;
+    }
+    .user-info{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 54px;
+        padding-left: 16px;
+    }
+        .user-info_name{
+            margin-bottom: 3px;
+            font-weight: 600;
+        }
+        .user-info_sign{
+            font-size: 12px;
+        }
+    .user-btn{
+        border: none;
+        background: transparent;
+        color: #333;
+        cursor: pointer;
+        opacity: (0.3);
+        padding: 0;
+        margin-left: 3px;
+        font-size: 14px;
+        &:hover,
+        &:active,
+        &:focus{
+            color: #333;
+            text-decoration: none;
+        }
+    }
