@@ -49,10 +49,37 @@ img {
   padding: 18px;
 }
 
+.not-authenticated #page_content {
+  height: calc(100vh - 110px);
+}
+
+#page_footer {
+  height: 24px;
+  font-size: 10px;
+  line-height: 24px;
+  text-align: center;
+  color: rgba(255, 255, 255, 0.9);
+}
+#page_footer a {
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: underline;
+}
+#page_footer a:hover, #page_footer a:focus, #page_footer a:active {
+  color: white;
+  text-decoration: none;
+}
+
 .u_menu {
   list-style: none;
   margin: 18px 0;
   padding: 0;
+}
+
+.u_menu-sep {
+  height: 1px;
+  background-color: #e9e9e9;
+  overflow: hidden;
+  margin: 0;
 }
 
 .u_menu-item {
@@ -72,7 +99,6 @@ img {
 .u_menu-item_content {
   display: block;
   padding: 0 16px;
-  color: #333;
   height: 48px;
   line-height: 48px;
   font-size: 14px;
@@ -82,24 +108,25 @@ img {
 .u_menu-item_content_icon {
   display: inline-block;
   margin-right: 16px;
-  min-width: 40px;
-  width: 40px;
+  width: 30px;
   text-align: left;
-  font-size: 20px;
+  font-size: 22px !important;
+  color: #757575;
+  vertical-align: middle;
 }
 
 .u_menu-item_add_link {
   background-color: #de4f4f;
   color: #fff;
-  height: 24px;
-  width: 24px;
+  height: 22px;
+  width: 22px;
   display: block;
   position: absolute;
   right: 16px;
-  top: 12px;
+  top: 14px;
   border-radius: 50%;
   text-align: center;
-  line-height: 24px;
+  line-height: 22px;
   font-size: 18px;
 }
 
@@ -208,12 +235,12 @@ img {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  height: calc(100vh - 104px);
+  height: calc(100vh - 110px);
 }
 
 .login_form,
 .registration_form {
-  background-color: rgba(255, 255, 255, 0.75);
+  background-color: rgba(255, 255, 255, 0.8);
   padding: calc(32px - 1rem) 22px 32px 22px;
   border-radius: 3px;
   overflow: hidden;
@@ -259,6 +286,11 @@ img {
   margin: 0 -0.75rem;
 }
 
+.registration_form-arrow {
+  line-height: 45px !important;
+  color: #9e9e9e;
+}
+
 .rp-title {
   font-size: 26px;
   line-height: 30px;
@@ -302,6 +334,11 @@ img {
   right: auto !important;
   bottom: 24px;
   left: 24px;
+}
+
+.user_card-list .clearfix {
+  margin-bottom: 18px;
+  width: 100%;
 }
 
 .user_card {
@@ -389,10 +426,11 @@ span.input-field_error {
 .page-title {
   text-transform: uppercase;
   font-size: 24px;
-  font-weight: 600;
+  font-weight: 500;
   text-align: right;
   color: #9e9e9e;
   margin: 0 0 24px;
+  line-height: 48px;
 }
 
 .modal-title {

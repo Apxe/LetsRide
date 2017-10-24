@@ -26,6 +26,11 @@
             <section id="page_content">
                 {{>yield}}
             </section>
+            {{#unless currentUser}}
+            <footer id="page_footer">
+                <a href="#">Помочь проекту</a> | v. 0.0002 by <a href="#">K-Studio</a>
+            </footer>
+            {{/unless}}
         </main>
         {{#if currentUser}}
         <aside id="right_bar" class="col-md-2">
@@ -40,13 +45,21 @@
             </div>
             <ul class="u_menu">
                 <li class="u_menu-item">
-                    <a href="{{pathFor 'ridesList'}}" class="u_menu-item_content"><i class="icon-helmet u_menu-item_content_icon"></i>Мои покатухи</a> <a href="#addRideModal" class="u_menu-item_add_link modal-trigger">+</a>
+                    <a href="#" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">mail_outline</i>Центр сообщений</a>
+                </li>
+                <li class="u_menu-sep"></li>
+                <li class="u_menu-item">
+                    <a href="{{pathFor 'ridesList'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">directions_bike</i>Мои покатухи</a> <a href="#addRideModal" class="u_menu-item_add_link modal-trigger">+</a>
                 </li> 
                 <li class="u_menu-item">
-                    <a href="{{pathFor 'eventsList'}}" class="u_menu-item_content"><i class="icon-calendar u_menu-item_content_icon"></i>Мои ивенты</a> <a href="#" class="u_menu-item_add_link">+</a>
+                    <a href="{{pathFor 'eventsList'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">event</i>Мои ивенты</a> <a href="#" class="u_menu-item_add_link">+</a>
+                </li>
+                <li class="u_menu-sep"></li>
+                <li class="u_menu-item">
+                    <a href="{{pathFor 'community'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">group</i>Сообщество</a>
                 </li>
                 <li class="u_menu-item">
-                    <a href="{{pathFor 'community'}}" class="u_menu-item_content"><i class="icon-users u_menu-item_content_icon"></i>Сообщество</a>
+                    <a href="#" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">dashboard</i>Доска обьявлений</a>
                 </li>
             </ul>
         </aside>

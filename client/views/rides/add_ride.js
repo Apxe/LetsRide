@@ -1,4 +1,5 @@
 Template.addRide.onRendered(function() {
+    const instance = this;
     GoogleMaps.load({key: 'AIzaSyAkcPyUg8x2cvQGu5So3pb2EMsQaXuDWdc'});
     this.$('.modal').modal({
         ready: function(modal, trigger) {
@@ -6,6 +7,60 @@ Template.addRide.onRendered(function() {
         },
     });
     this.$('select').material_select();
+    this.$('#ride_form').validate({
+        errorElement: 'span',
+        errorClass: 'input-field_error',
+        rules: {
+            title: {
+                required: true
+            },
+            route: {
+                required: true
+            },
+            description: {
+                required: true
+            },
+            start: {
+                required: true
+            },
+            coordinates: {
+                required: true
+            }
+        },
+        submitHandler: function(form) {
+            if ($(form).find("#ride_img")[0].files && $(form).find("#ride_img")[0].files[0]) {
+                const upload = Images.insert({
+                    file: $(event.target).find("#ride_img")[0].files[0],
+                    streams: 'dynamic',
+                    chunkSize: 'dynamic'
+                }, false);
+                upload.on('start', function () {
+                    instance.currentUpload.set(this);
+                });
+                upload.on('end', function (error, imageFile) {
+                    if (error) {
+                        alert('Error during upload: ' + error);
+                    } else {
+                        console.log('File "' + imageFile._id + '" successfully uploaded');
+                        var ride = {
+                            title: $(form).find("[name='title']").val(),
+                            image: imageFile._id,
+                            route: $(form).find("[name='route']").val(),
+                            description: $(form).find("[name='description']").val(),
+                            start: $(form).find("[name='start']").val(),
+                            requirements: $(form).find("[name='requirements']").val(),
+                            coordinates: $(form).find("[name='coordinates']").val()    
+                        } 
+                        ride._id = Rides.insert(ride);
+                        $('#addRideModal').modal('close');
+                        Router.go('ridePage', ride);
+                    }
+                    instance.currentUpload.set(false);
+                });
+                upload.start();
+            }
+        }
+    })
 });
 Template.addRide.onCreated(function() {
     this.currentUpload = new ReactiveVar(false);
@@ -23,9 +78,11 @@ Template.addRide.helpers({
         return Template.instance().currentUpload.get();
     },
     rideCoordinatesOptions: function() {
+        var user = Meteor.user(),
+            latlng = user.profile.latlng.split(',');
         if (GoogleMaps.loaded()) {
             return {
-                center: new google.maps.LatLng(-37.8136, 144.9631),
+                center: new google.maps.LatLng(parseFloat(latlng[0]), parseFloat(latlng[1])),
                 zoom: 8
             };
         }
@@ -34,36 +91,6 @@ Template.addRide.helpers({
 Template.addRide.events({
     'submit #ride_form': function(event, template) {
         event.preventDefault();
-        if ($(event.target).find("#ride_img")[0].files && $(event.target).find("#ride_img")[0].files[0]) {
-            const upload = Images.insert({
-                file: $(event.target).find("#ride_img")[0].files[0],
-                streams: 'dynamic',
-                chunkSize: 'dynamic'
-            }, false);
-            upload.on('start', function () {
-                template.currentUpload.set(this);
-            });
-            upload.on('end', function (error, imageFile) {
-                if (error) {
-                    alert('Error during upload: ' + error);
-                } else {
-                    console.log('File "' + imageFile._id + '" successfully uploaded');
-                    var ride = {
-                        title: $(event.target).find("[name='title']").val(),
-                        image: imageFile._id,
-                        route: $(event.target).find("[name='route']").val(),
-                        description: $(event.target).find("[name='description']").val(),
-                        start: $(event.target).find("[name='start']").val(),
-                        requirements: $(event.target).find("[name='requirements']").val(),
-                        coordinates: $(event.target).find("[name='coordinates']").val()    
-                    } 
-                    ride._id = Rides.insert(ride);
-                    $('#addRideModal').modal('close');
-                    Router.go('ridePage', ride);
-                }
-                template.currentUpload.set(false);
-            });
-            upload.start();
-        }
+        
     }
 })

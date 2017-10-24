@@ -3,11 +3,11 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    height: calc(100vh - 104px);
+    height: calc(100vh - 110px);
 }
 .login_form,
 .registration_form{
-    background-color: rgba(255, 255, 255, 0.75);
+    background-color: rgba(255, 255, 255, 0.8);
     padding: calc(32px - 1rem) 22px 32px 22px;
     border-radius: 3px;
     overflow: hidden;
@@ -17,29 +17,29 @@
     width: 340px;
     
 }
-.login_form-separator{
-    text-align: center;
-    margin: 20px 0;
-    color: #9e9e9e;
-    font-size: 16px;
-    position: relative;
-    &:before,
-    &:after{
-        content: "";
-        display: block;
-        height: 1px;
-        background-color: #9e9e9e;
-        width: calc(50% - 22px);
-        position: absolute;   
-        top: 50%;
+    .login_form-separator{
+        text-align: center;
+        margin: 20px 0;
+        color: #9e9e9e;
+        font-size: 16px;
+        position: relative;
+        &:before,
+        &:after{
+            content: "";
+            display: block;
+            height: 1px;
+            background-color: #9e9e9e;
+            width: calc(50% - 22px);
+            position: absolute;   
+            top: 50%;
+        }
+        &:before{
+           left: 0; 
+        }
+        &:after{
+            right: 0;
+        }
     }
-    &:before{
-       left: 0; 
-    }
-    &:after{
-        right: 0;
-    }
-}
 .registration_form{
     width: 680px;
     .autocomplete-content{
@@ -47,6 +47,10 @@
         width: 100%;
     }
 }
-.registration_form-row{
-    margin: 0 -0.75rem;
-}
+    .registration_form-row{
+        margin: 0 -0.75rem;
+    }
+    .registration_form-arrow{
+        line-height: 45px !important;
+        color: #9e9e9e;
+    }

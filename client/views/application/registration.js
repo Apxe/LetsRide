@@ -4,17 +4,17 @@ Template.registration.events({
     }
 });
 Template.registration.onRendered(function() {
-//    var cities_latlng = {
-//        "Хмельницкий": '49.4166667,27.0',
-//        "Киев": '49.7988889,30.1152778',
-//        "Винница": '49.2333333,28.4833333',
-//        "Ивано-Франковск": '48.9166667,24.7166667',
-//        "Львов": '49.85,24.0166667',
-//        "Харьков": '49.98967,36.208309',
-//        "Кривой Рог": '47.899726,33.379534',
-//        "Днепр": '48.45,34.9833333',
-//        "Одесса": '46.4666667,30.7333333'
-//    };
+    var cities_latlng = {
+        "Хмельницкий": '49.4166667,27.0',
+        "Киев": '49.7988889,30.1152778',
+        "Винница": '49.2333333,28.4833333',
+        "Ивано-Франковск": '48.9166667,24.7166667',
+        "Львов": '49.85,24.0166667',
+        "Харьков": '49.98967,36.208309',
+        "Кривой Рог": '47.899726,33.379534',
+        "Днепр": '48.45,34.9833333',
+        "Одесса": '46.4666667,30.7333333'
+    };
     this.$('[name="birthdate"]').pickadate({
         selectMonths: true, // Creates a dropdown to control month
         selectYears: 100,
@@ -39,6 +39,7 @@ Template.registration.onRendered(function() {
         limit: 2,
         minLength: 1
     });
+
     this.$('#registration_form').validate({
         errorElement: 'span',
         errorClass: 'input-field_error',
@@ -87,22 +88,37 @@ Template.registration.onRendered(function() {
             }
         },
         submitHandler: function(form) {
-            var email = $('#email').value,
-                username = $('#username').value,
-                password = $('#password').value,
-                city = $('#city').value,
-                birthdate = $('#birthdate').value;
+            var email = $('#email').val(),
+                username = $('#username').val(),
+                password = $('#password').val(),
+                city = $('#city').val(),
+                latlng,
+                birthdate = $('#birthdate').val();
+            for(var key in cities_latlng){
+                if (key == city){
+                    latlng = cities_latlng[key];
+                    break;
+                }
+            }
             Accounts.createUser({
                 username: username,
                 password: password,
                 email: email,
                 profile: {
-                    name: username,
                     city: city,
+                    latlng: latlng,
                     birthdate: birthdate
                 }
-            }, function(err) {
-                console.log(err);
+            }, function(error) {
+                if (error){
+                    var errorText = 'Произошла ошибка';
+                    if (error.reason == 'Username already exists.')
+                        errorText = 'Имя пользователя уже используется';
+                    else 
+                        if (error.reason == 'Email already exists.')
+                            errorText = 'Этот email уже зарегистрированный';
+                    Materialize.toast('<i class="material-icons">error_outline</i>&nbsp;&nbsp;' + errorText, 5000, 'red darken-1');
+                }
             });
         }
     })

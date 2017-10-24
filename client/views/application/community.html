@@ -1,7 +1,11 @@
 <template name="community">
-    <div class="row">
+    <div class="page-title">Сообщество ({{currentUser.profile.city}})</div>
+    <div class="row user_card-list">
         {{#each community}}
             {{>communityItem}}
+            {{#if needClearfix @index}}
+            <div class="clearfix"></div>
+            {{/if}}
         {{/each}}
     </div>
 </template>

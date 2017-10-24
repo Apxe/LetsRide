@@ -2,45 +2,45 @@
     <div class="page-title">Редактирование профиля</div>
     <div class="row">
         <div class="col-md-3">
-            <img src="https://images.pexels.com/photos/89635/pexels-photo-89635.jpeg?w=1260&h=750&auto=compress&cs=tinysrgb" alt="user photo">
+            <img src="https://i.pinimg.com/736x/c3/c4/94/c3c494a7194efecc6991cf527968b7b3--starwars-mtb-bike.jpg" alt="user photo" class="edit_profile-photo">
         </div>
         <div class="col-md-9">
             <div class="row">
                 <div class="col-md-4">
                     <div class="input-field">
-                        <input id="" type="text" name="start" value="{{currentUser.username}}">
+                        <input id="" type="text" name="start" value="{{currentUser.profile.name}}">
                         <label for="" class="active">Имя</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-field">
-                        <input id="" type="text" name="start">
-                        <label for="">Подпись</label>
+                        <input id="" type="text" name="start" value="{{currentUser.profile.sign}}">
+                        <label for="" class="active">Подпись</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-field">
-                        <input id="" type="text" name="start">
-                        <label for="">Дата рождения</label>
+                        <input id="" type="text" name="start" value="{{currentUser.profile.birthdate}}">
+                        <label for="" class="active">Дата рождения</label>
                     </div>
                 </div>
                 <div class="clearfix"></div>
                 <div class="col-md-4">
                     <div class="input-field">
-                        <input id="" type="text" name="start">
-                        <label for="">E-mail</label>
+                        <input id="" type="text" name="start" value="{{currentUser.email[0]}}">
+                        <label for="" class="active">E-mail</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-field">
-                        <input id="" type="text" name="start">
-                        <label for="">Телефон</label>
+                        <input id="" type="text" name="start" value="{{currentUser.profile.telephone}}">
+                        <label for="" class="active">Телефон</label>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="input-field">
-                        <input id="" type="text" name="start">
-                        <label for="">Город</label>
+                        <input id="" type="text" name="start" value="{{currentUser.profile.city}}">
+                        <label for="" class="active">Город</label>
                     </div>
                 </div>
                 <div class="clearfix"></div>
@@ -76,5 +76,8 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="right-align">
+        <button type="submit" class="waves-effect waves-light btn-large">Сохранить</button>
     </div>
 </template>

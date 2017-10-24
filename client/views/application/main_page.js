@@ -41,9 +41,11 @@ Template.mainPage.onCreated(function() {
 });
 Template.mainPage.helpers({
     mainMapOptions: function() {
+        var user = Meteor.user(),
+            latlng = user.profile.latlng.split(',');
         if (GoogleMaps.loaded()) {
             return {
-                center: new google.maps.LatLng(49.42633905099989, 26.98516845703125),
+                center: new google.maps.LatLng(parseFloat(latlng[0]), parseFloat(latlng[1])),
                 zoom: 13
             };
         }

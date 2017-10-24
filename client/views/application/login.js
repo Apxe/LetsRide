@@ -20,22 +20,13 @@ Template.login.onRendered(function() {
                 required: true
             }
         },
-        messages: {
-            email: {
-                required: "Не оставляйте это поле пустым.",
-                email: "Проверьте корректность e-mail."
-            },
-            password: {
-                required: "Не оставляйте это поле пустым."
-            }
-        },
         submitHandler: function(form) {
-            var email = $('#login-email').val(),
-                password = $('#login-password').val();
+            var email = $(form).find('#login-email').val(),
+                password = $(form).find('#login-password').val();
             Meteor.loginWithPassword(email, password, function(error) {
                 if (error){
                     instance.loginError.set(true);
-                    var errorText;
+                    var errorText = 'Произошла ошибка';
                     if (error.reason == 'Match failed')
                         errorText = 'Проверьте правильность введенных даных';
                     else 
@@ -44,7 +35,7 @@ Template.login.onRendered(function() {
                         else 
                             if (error.reason == 'Incorrect password')
                                 errorText = 'Неверный пароль';
-                    Materialize.toast(errorText, 5000, 'red darken-1');
+                    Materialize.toast('<i class="material-icons">error_outline</i>&nbsp;&nbsp;' + errorText, 5000, 'red darken-1');
                 }
             });
         }

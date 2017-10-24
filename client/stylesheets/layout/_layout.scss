@@ -25,6 +25,28 @@
 #page_content{
     overflow: hidden;
     overflow-y: auto;
-    height: calc(100vh - 86px);
+    height: calc(100vh - 86px); 
     padding: 18px;
+}
+.not-authenticated{
+    #page_content{
+        height: calc(100vh - 110px); 
+    }
+}
+#page_footer{
+    height: 24px;
+    font-size: 10px;
+    line-height: 24px;
+    text-align: center;
+    color: rgba(255, 255, 255, 0.9); 
+    a{
+        color: rgba(255, 255, 255, 0.9);
+        text-decoration: underline;
+        &:hover,
+        &:focus,
+        &:active{
+            color: rgba(255, 255, 255, 1);
+            text-decoration: none;
+        }
+    }
 }

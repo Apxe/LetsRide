@@ -5,7 +5,7 @@
                 <div class="col m6">
                     <div class="input-field">
                         <input id="username" type="text" name="name" class="form-control">
-                        <label for="username" class="form-control_label">Имя</label>
+                        <label for="username" class="form-control_label">Псевдоним</label>
                     </div>
 
                     <div class="input-field">
@@ -35,8 +35,13 @@
                     </div>
                 </div>
             </div>
-            <div class="center-align">
-                <button type="submit" class="waves-effect waves-light btn-large">Зарегистрироваться</button>
+            <div class="row">
+                <div class="col-md-6">
+                    <a href="{{pathFor 'mainPage'}}" class="material-icons small registration_form-arrow">arrow_back</a>
+                </div>
+                <div class="col-md-6 right-align">
+                    <button type="submit" class="waves-effect waves-light btn-large">Зарегистрироваться</button>
+                </div>
             </div>
         </form>
     </div>

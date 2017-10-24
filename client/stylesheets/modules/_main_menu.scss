@@ -3,6 +3,12 @@
     margin: 18px 0;
     padding: 0;
 }
+    .u_menu-sep{
+        height: 1px;
+        background-color: #e9e9e9;
+        overflow: hidden;
+        margin: 0;
+    }
     .u_menu-item{
         position: relative;
         &:hover{
@@ -19,7 +25,6 @@
         .u_menu-item_content{
             display: block;
             padding: 0 16px;
-            color: #333;
             height: 48px;
             line-height: 48px;
             font-size: 14px;
@@ -29,22 +34,23 @@
             .u_menu-item_content_icon{
                 display: inline-block;
                 margin-right: 16px;
-                min-width: 40px;
-                width: 40px;
+                width: 30px;
                 text-align: left;
-                font-size: 20px;
+                font-size: 22px !important;
+                color: #757575;
+                vertical-align: middle;
             }
         .u_menu-item_add_link{
             background-color: #de4f4f;
             color: #fff;
-            height: 24px;
-            width: 24px;
+            height: 22px;
+            width: 22px;
             display: block;
             position: absolute;
             right: 16px;
-            top: 12px;
+            top: 14px;
             border-radius: 50%;
             text-align: center;
-            line-height: 24px;
+            line-height: 22px;
             font-size: 18px;
         }
