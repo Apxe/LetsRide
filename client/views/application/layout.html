@@ -1,6 +1,6 @@
 <template name="layout">
     <section class="{{#if currentUser}} row authenticated {{else}} not-authenticated {{/if}}" id="wrapp">
-        <main id="main_content" class="{{#if currentUser}} col m10 {{/if}}">
+        <main id="main" class="{{#if currentUser}} col m10 {{/if}}">
             <header id="page_header" class="red darken-1">
                 <div class="row">
                     <div class="col">
@@ -8,16 +8,16 @@
                     </div>
                     {{#if currentUser}}
                     <div class="col-md-8">
-                        <ul class="m_menu">
-                            <li class="m_menu-item"><a href="#" class="m_menu-item_content">Правила портала</a></li>
+                        <ul class="t_menu">
+                            <li class="t_menu-item"><a href="#" class="t_menu-item_content">Правила портала</a></li>
                         </ul>
                     </div>
                     {{else}}
                     <div class="col-md-8">
-                        <ul class="m_menu">
-                            <li class="m_menu-item"><a href="#" class="m_menu-item_content">О проекте</a></li>
-                            <li class="m_menu-item"><a href="#" class="m_menu-item_content">Блог</a></li>
-                            <li class="m_menu-item"><a href="#" class="m_menu-item_content">Мобильное приложение</a></li>
+                        <ul class="t_menu">
+                            <li class="t_menu-item"><a href="#" class="t_menu-item_content">О проекте</a></li>
+                            <li class="t_menu-item"><a href="#" class="t_menu-item_content">Блог</a></li>
+                            <li class="t_menu-item"><a href="#" class="t_menu-item_content">Мобильное приложение</a></li>
                         </ul>
                     </div>
                     {{/if}}
@@ -27,6 +27,23 @@
                 {{>yield}}
             </section>
             {{#unless currentUser}}
+            <section id="side_content">
+                <button class="sc-hide_btn"><i class="material-icons">keyboard_arrow_right</i></button>
+                <p>Проект "Lets Ride!" создается с многими целями, но основные из них - обьединить всех велосипедистов во время занятия любимым делом, найти новых друзей и получить опыт.</p>
+                <p>Функционал сайта облегчает организацию велосипедных заездов и мероприятий, дает возможность отслеживать велосипедную жизнь выбраного города и с легкостью найти компаньенов:</p>
+                <ul class="browser-default">
+                    <li>
+                        Основная особеность - это интерактивная карта. На ней расположены соответсвующими метками ближайшие заезды или мероприятия. После клика на метку можно увидеть основную информацию: описание; требования к участникам; маршрут; дата и время старта. На все заезды и мероприятия нужно подавать заявку организатору. После подтверждения будет доступна полная информация и чат-комната с участниками.
+                    </li>
+                    <li>
+                        Каждый из зарегестрированных пользователей сможет запланировать свой личный заезд, прогулку или организовать мероприятие. 
+                    </li>
+                    <li>
+                        Также запланирована функция онлайн-аукциона, где можно будеть продать и купить любой предмет по тематике сайта.
+                    </li>
+                </ul>
+                <p>Мы очень стремимя к развитию велоспорта и велоиндустрии в целом!</p>
+            </section>
             <footer id="page_footer">
                 <a href="#">Помочь проекту</a> | v. 0.0002 by <a href="#">K-Studio</a>
             </footer>

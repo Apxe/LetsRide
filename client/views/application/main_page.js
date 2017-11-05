@@ -15,15 +15,21 @@ Template.mainPage.onCreated(function() {
                 map: map.instance
             });
             marker.addListener('click', function() {
-                var image = Images.findOne({_id: element.image});
-                $('#rideQViewModal .modal-title').html(element.title);
+                var image = Images.findOne({_id: element.image}),
+                    modalContent;
                 if (image) {
-                    $('#rideQViewModal .modal-content').html('<div class="row"><div class="col-md-6"><img class="ride_modal-img" src="' + image.link() + '" alt="' + element.title + '"></div><div class="col-md-6"><h5 class="ride_modal-sub_title">Описание:</h5><div class="ride_modal-desc">' +  nl2br(element.description, false) + '</div></div></div><h5 class="ride_modal-sub_title">Требования к участникам:</h5><div class="ride_modal-requirements">' + nl2br(element.requirements, false) + '</div>');
+                    modalContent = '<div class="row"><div class="col-md-4"><img class="ride_modal-img" src="' + image.link() + '" alt="' + element.title + '"></div><div class="col-md-8"><h5 class="ride_modal-sub_title">Описание:</h5><div class="ride_modal-desc">' +  nl2br(element.description, false) + '</div></div></div>';
                 }
                 else {
-                    $('#rideQViewModal .modal-content').html('<h5 class="ride_modal-sub_title">Описание:</h5><div class="ride_modal-desc">' +  nl2br(element.description, false) + '</div><h5 class="ride_modal-sub_title">Требования к участникам:</h5><div class="ride_modal-requirements">' + nl2br(element.requirements, false) + '</div>');
+                    modalContent = '<h5 class="ride_modal-sub_title">Описание:</h5><div class="ride_modal-desc">' +  nl2br(element.description, false) + '</div>';
                 }
-                $('#rideQViewModal .ride_modal-start').html(element.start);
+                modalContent += '<div class="ride_modal-route"><strong>Маршрут&nbsp;(<a href="#">смотреть на карте</a>):</strong><br>' + element.route + '</div>';
+                if (element.requirements) {
+                    modalContent += '<div class="ride_modal-requirements"><strong>Требования к участникам:</strong><br>' + nl2br(element.requirements, false) + '</div>';
+                }
+                $('#rideQViewModal .modal-title').html(element.title);
+                $('#rideQViewModal .modal-content').html(modalContent);
+                $('#rideQViewModal .ride_modal-start').html('<strong>Дата и время сбора:</strong>&nbsp;' + element.start);
                 $('#rideQViewModal').modal('open');
             });
         }

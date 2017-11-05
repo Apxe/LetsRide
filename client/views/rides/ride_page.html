@@ -1,18 +1,13 @@
 <template name="ridePage">
   <div class="row">
       <div class="col-sm-6">
-          <img src="https://images.pexels.com/photos/59904/pexels-photo-59904.jpeg?w=1260&h=500&auto=compress&cs=tinysrgb" alt="">
+          <img src="{{image.link}}" alt="">
       </div>
       <div class="col-sm-6">
-          <div class="row">
-              <div class="col-md-8">
-                  <h1 class="rp-title">{{title}}</h1>
-              </div>
-              <div class="col-md-4">
-                  <div class="rp-start">{{start}}</div>
-              </div>
-          </div>
+          <div class="rp-title">{{title}}</div>
           <div class="rp-route">{{route}}</div>
+<!--
+          <div class="rp-start">{{start}}</div>
           <div class="rp-desc">
               <h4>Описание:</h4>
               {{description}}
@@ -21,6 +16,7 @@
               <h4>Требования к участникам:</h4>
               {{requirements}}
           </div>
+-->
       </div>
   </div>
 </template>

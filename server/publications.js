@@ -9,6 +9,9 @@ Meteor.publish('users', function() {
 Meteor.publish('rides', function() {
     return Rides.find();
 });
+Meteor.publish('events', function() {
+    return Events.find();
+});
 Meteor.publish('files.images.all', function () {
     return Images.find().cursor;
 });

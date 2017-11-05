@@ -1,0 +1,126 @@
+<template name="editProfile">
+    <div class="page-title">Редактирование профиля</div>
+    <form action="" class="edit_profile">
+        <div class="row">
+            <div class="col-md-3">
+                <label class="edit_profile-photo">
+                    <img src="https://i.pinimg.com/736x/c3/c4/94/c3c494a7194efecc6991cf527968b7b3--starwars-mtb-bike.jpg" alt="user photo" class="edit_profile-photo">
+                    <div class="edit_profile-photo_icon"><i class="material-icons medium">photo_camera</i></div>
+                    <input type="file" id="newPhoto" class="hide">
+                </label>
+                <div id="newPhotoModal" class="modal photo_modal">
+                    <div class="photo_modal-content">
+                        {{#if newUserPhoto}}
+                        <img src="{{newUserPhoto.link}}" alt="Новое фото пользователя" id="newPhotoArea" class="responsive-img">
+                        {{else}}
+                        Что-то пошло не так...
+                        {{/if}}
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="modal-action modal-close waves-effect waves-red btn-flat">Отменить</button>
+                        <button type="button" class="modal-action modal-close waves-effect waves-green btn-flat">Сохранить</button>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <input id="name" type="text" name="name" value="{{currentUser.profile.name}}">
+                            {{#if currentUser.profile.name}}
+                            <label for="name" class="active">Имя</label>
+                            {{else}}
+                            <label for="name">Имя</label>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <input id="sign" type="text" name="start" value="{{currentUser.profile.sign}}">
+                            {{#if currentUser.profile.sign}}
+                            <label for="sign" class="active">Подпись</label>
+                            {{else}}
+                            <label for="sign">Подпись</label>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <input id="birthdate" type="text" name="start" value="{{currentUser.profile.birthdate}}">
+                            {{#if currentUser.profile.birthdate}}
+                            <label for="birthdate" class="active">Дата рождения</label>
+                            {{else}}
+                            <label for="birthdate">Дата рождения</label>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <input id="email" type="text" name="start" value="{{currentUser.email[0]}}">
+                            {{#if currentUser.email}} 
+                            <label for="email" class="active">E-mail</label>
+                            {{else}}
+                            <label for="email">E-mail</label>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <input id="phone" type="text" name="start" value="{{currentUser.profile.telephone}}">
+                            {{#if currentUser.profile.telephone}}
+                            <label for="phone" class="active">Телефон</label>
+                            {{else}}
+                            <label for="phone">Телефон</label>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <input id="city" type="text" name="start" value="{{currentUser.profile.city}}">
+                            {{#if currentUser.profile.city}}
+                            <label for="city" class="active">Город</label>
+                            {{else}}
+                            <label for="city">Город</label>
+                            {{/if}}
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <select name="" id="">
+                                <option value="" disabled selected>Основная</option>
+                                <option value="">Горный велосипед</option>
+                                <option value="">Шоссейный велоспорт</option>
+                                <option value="">BMX</option>
+                                <option value="">Велосипедный туризм</option>
+                            </select>
+                            <label for="">Дисциплина катания</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <select name="" id="">
+                                <option value="" disabled selected>Выбрать</option>
+                                <option value="">Новенький</option>
+                                <option value="">Бывалый</option>
+                                <option value="">Опытен</option>
+                                <option value="">Все ближе к вершине</option>
+                            </select>
+                            <label for="">Уровень катания</label>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="input-field">
+                            <input id="" type="text" name="start">
+                            <label for="">Основной байк</label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="right-align">
+            <button type="submit" class="waves-effect waves-light btn-large">Сохранить</button>
+        </div>
+    </form>
+</template>
