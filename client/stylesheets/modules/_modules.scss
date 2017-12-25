@@ -9,7 +9,7 @@
     background-size: cover;
     #page_content {
         height: calc(100vh - 110px); 
-    }
+    } 
 }
 
 
@@ -39,11 +39,12 @@
     border-left: 1px solid #f1f1f1;
     text-align: center;
     padding: 0;
-    color: #212121;
+    color: #e9e9e9;
     background-color: #fff;
     &:hover,
     &:focus{
         background-color: #f1f1f1;
+        color: #212121;
     }
 }
 
@@ -140,8 +141,36 @@
     padding: 0 24px;
     font-size: 2rem;
 }
+.modal-close_btn{
+    color: #fff;
+    height: 56px;
+    border: none;
+    background-color: transparent;
+    position: absolute;
+    right: 0;
+    top: 0;
+    padding: 0 24px;
+    transition: all 0.25s ease-in-out;
+    &:hover,
+    &:focus{
+        background-color: rgba(255, 255, 255, 0.1);
+    }
+}
 .modal.modal-fixed-footer .modal-title + .modal-content {
     height: calc(100% - 112px);
+}
+
+.ride_card-wrapp{
+    padding-bottom: 18px;
+}
+.ride_card{
+    height: 100%;
+    margin: 0;
+}
+.ride_card-img{
+    background-size: cover;
+    background-position: center;
+    width: 50%;
 }
 
 .photo_modal{
@@ -162,6 +191,18 @@
         height: calc(100vh - 86px);
     }
 
+
+
+.project_version{
+    padding: 0 16px;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    font-size: 10px;
+    line-height: 12px;
+    color: #a9a9a9;
+    bottom: 16px;
+}
 
 
 span.input-field_error{
@@ -215,6 +256,18 @@ span.input-field_error{
         .edit_profile-photo_icon{
             opacity: 1;
         }
+        img{
+            opacity: 0.5;
+        }
+    }
+    img{
+        display: block;
+        border: 1px solid #9e9e9e;
+        box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 1px 5px 0 rgba(0, 0, 0, 0.12), 0 3px 1px -2px rgba(0, 0, 0, 0.2);
+        height: 263px;
+        margin: 0 auto;
+        border-radius: 50%;
+        transition: all 0.25s ease-in-out;
     }
 }
     .edit_profile-photo_icon{
@@ -227,8 +280,7 @@ span.input-field_error{
         flex-direction: column;
         justify-content: center;
         text-align: center;
-        background-color: rgba(0, 0, 0, 0.2);
-        color: #fff;
+        color: #E53935;
         opacity: 0;
         transition: all 0.25s ease-in-out;
     }

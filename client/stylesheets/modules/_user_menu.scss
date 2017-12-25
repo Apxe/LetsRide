@@ -18,8 +18,11 @@
                 text-decoration: none;
             }
         }
-        &.active .u_menu-item_content{
-            color: #de4f4f;
+        &.active{
+            .u_menu-item_content_icon,
+            .u_menu-item_content{
+                color: #de4f4f;
+            }
         }
     }
         .u_menu-item_content{

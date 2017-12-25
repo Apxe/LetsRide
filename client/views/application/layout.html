@@ -9,15 +9,15 @@
                     {{#if currentUser}}
                     <div class="col-md-8">
                         <ul class="t_menu">
-                            <li class="t_menu-item"><a href="#" class="t_menu-item_content">Правила портала</a></li>
+                            <li class="t_menu-item"><a href="#rulesModal" class="t_menu-item_content modal-trigger">Правила портала</a></li>
                         </ul>
                     </div>
                     {{else}}
                     <div class="col-md-8">
                         <ul class="t_menu">
-                            <li class="t_menu-item"><a href="#" class="t_menu-item_content">О проекте</a></li>
-                            <li class="t_menu-item"><a href="#" class="t_menu-item_content">Блог</a></li>
-                            <li class="t_menu-item"><a href="#" class="t_menu-item_content">Мобильное приложение</a></li>
+                            <li class="t_menu-item"><a href="#" class="t_menu-item_content sidebar-trigger">О проекте</a></li>
+                            <li class="t_menu-item"><a href="#" class="t_menu-item_content sidebar-trigger">Блог</a></li>
+                            <li class="t_menu-item"><a href="#" class="t_menu-item_content sidebar-trigger">Мобильное приложение</a></li>
                         </ul>
                     </div>
                     {{/if}}
@@ -45,7 +45,7 @@
                 <p>Мы очень стремимя к развитию велоспорта и велоиндустрии в целом!</p>
             </section>
             <footer id="page_footer">
-                <a href="#">Помочь проекту</a> | v. 0.0002 by <a href="#">K-Studio</a>
+                <a href="#">Помочь проекту</a> | v. 0.0003 by <a href="#">K-Studio</a>
             </footer>
             {{/unless}}
         </main>
@@ -61,28 +61,42 @@
                 </div>
             </div>
             <ul class="u_menu">
+                <li class="u_menu-item {{#if isActiveMenuItem 'mainPage'}} active {{/if}}">
+                    <a href="{{pathFor 'mainPage'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">map</i>Карта</a>
+                </li>
+                <li class="u_menu-sep"></li>
                 <li class="u_menu-item">
                     <a href="#" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">mail_outline</i>Центр сообщений</a>
                 </li>
                 <li class="u_menu-sep"></li>
-                <li class="u_menu-item">
+                <li class="u_menu-item {{#if isActiveMenuItem 'ridesList'}} active {{/if}}">
                     <a href="{{pathFor 'ridesList'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">directions_bike</i>Мои покатухи</a> <a href="#addRideModal" class="u_menu-item_add_link modal-trigger">+</a>
                 </li> 
-                <li class="u_menu-item">
+                <li class="u_menu-item {{#if isActiveMenuItem 'eventsList'}} active {{/if}}">
                     <a href="{{pathFor 'eventsList'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">event</i>Мои ивенты</a> <a href="#" class="u_menu-item_add_link">+</a>
                 </li>
                 <li class="u_menu-sep"></li>
-                <li class="u_menu-item">
+                <li class="u_menu-item {{#if isActiveMenuItem 'community'}} active {{/if}}">
                     <a href="{{pathFor 'community'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">group</i>Сообщество</a>
                 </li>
                 <li class="u_menu-item">
                     <a href="#" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">dashboard</i>Доска обьявлений</a>
                 </li>
             </ul>
+            <div class="project_version"><a href="#">Помочь проекту</a> | v. 0.0003 by <a href="#">K-Studio</a></div>
         </aside>
         {{/if}}
     </section>
     {{#if currentUser}}
         {{>addRide}}
     {{/if}}
+    <div id="rulesModal" class="modal modal-fixed-footer">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+        </div>
+    </div>
 </template>

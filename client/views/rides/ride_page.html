@@ -1,22 +1,60 @@
 <template name="ridePage">
-  <div class="row">
-      <div class="col-sm-6">
-          <img src="{{image.link}}" alt="">
-      </div>
-      <div class="col-sm-6">
-          <div class="rp-title">{{title}}</div>
-          <div class="rp-route">{{route}}</div>
-<!--
-          <div class="rp-start">{{start}}</div>
-          <div class="rp-desc">
-              <h4>Описание:</h4>
-              {{description}}
-          </div>
-          <div class="rp-requirements">
-              <h4>Требования к участникам:</h4>
-              {{requirements}}
-          </div>
--->
-      </div>
-  </div>
+    <div class="row">
+        <div class="col-sm-6">
+            <img src="{{image.link}}" alt="" id="rideImg">
+        </div>
+        <div class="col-sm-6">
+            <div class="rp-title" id="rideTitle">{{title}}</div>
+            <div class="rp-route" id="rideRoute">{{route}}</div>
+            <div class="rp-map" id="rideRouteWrapp">
+                {{> googleMap name="rideRoute" options=rideRouteOptions}}
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-6 rp-desc">
+            {{#if description}}
+            <div class="rp-desc_item">
+                <div class="rp-sub_title">Описание:</div>
+                {{description}}
+            </div>
+            {{/if}}
+            {{#if requirements}}
+            <div class="rp-desc_item">
+                <div class="rp-sub_title">Требования к участникам:</div>
+                {{requirements}}
+            </div>
+            {{/if}}
+            <div class="rp-desc_item">
+                <div class="rp-sub_title">Участники:</div>
+                    {{#each member in members}}
+                    <div class="chip">
+                        <img src="https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg" alt="{{member.username}}">
+                        {{member.username}}
+                    </div>
+                    {{else}}
+                    Нет, пока что.
+                    {{/each}}
+            </div>
+        </div>
+        <div class="col-sm-6 rp-chat">
+            <div class="rp-sub_title">Чат с участниками:</div>
+            <div id="ridePageChat" class="rp-chat_area">
+                
+            </div>
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="input-field">
+                        <input id="message" type="text" class="validate">
+                        <label for="message">Сообщение</label>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="input-field">
+                        <button class="btn btn-large">Отправить</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </template>

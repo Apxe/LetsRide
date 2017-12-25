@@ -41,6 +41,14 @@ Template.editProfile.events({
             $set: {
                 'profile.name': $(event.target).find('input[name="name"]').val()
             }
+        }, function(error) {
+            if (error){
+                var errorText = 'Произошла ошибка';
+                Materialize.toast('<i class="material-icons">error_outline</i>&nbsp;&nbsp;' + errorText, 5000, 'red darken-1');
+            } else {
+                var successText = 'Данные успешно обновлены';
+                Materialize.toast('<i class="material-icons">info_outline</i>&nbsp;&nbsp;' + successText, 5000, 'light-green darken-1');
+            }
         });
     }
 });

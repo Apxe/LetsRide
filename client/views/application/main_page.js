@@ -9,10 +9,15 @@ Template.mainPage.onCreated(function() {
     }
     GoogleMaps.ready('mainMap', function(map) {
         function setMarkers(element, index, array) {
-            var latlng = element.coordinates.split(','); 
+            var latlng = element.coordinates.split(',');
+            var markerImg = {
+                url: '/markers/ride_marker.png',
+                scaledSize: new google.maps.Size(27, 41)  
+            }
             var marker = new google.maps.Marker({
                 position: new google.maps.LatLng(parseFloat(latlng[0]), parseFloat(latlng[1])),
-                map: map.instance
+                map: map.instance,
+                icon: markerImg
             });
             marker.addListener('click', function() {
                 var image = Images.findOne({_id: element.image}),

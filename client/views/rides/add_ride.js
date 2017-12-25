@@ -4,7 +4,7 @@ Template.addRide.onRendered(function() {
     this.$('.modal').modal({
         ready: function(modal, trigger) {
             google.maps.event.trigger(GoogleMaps.maps.rideCoordinates.instance, 'resize')
-        },
+        }
     });
     this.$('select').material_select();
     this.$('#ride_form').validate({
@@ -39,9 +39,9 @@ Template.addRide.onRendered(function() {
                 });
                 upload.on('end', function (error, imageFile) {
                     if (error) {
-                        alert('Error during upload: ' + error);
+                        alert('Ошибка при загрузке: ' + error);
                     } else {
-                        console.log('File "' + imageFile._id + '" successfully uploaded');
+                        var user = Meteor.user();
                         var ride = {
                             title: $(form).find("[name='title']").val(),
                             image: imageFile._id,
@@ -49,7 +49,13 @@ Template.addRide.onRendered(function() {
                             description: $(form).find("[name='description']").val(),
                             start: $(form).find("[name='start']").val(),
                             requirements: $(form).find("[name='requirements']").val(),
-                            coordinates: $(form).find("[name='coordinates']").val()    
+                            coordinates: $(form).find("[name='coordinates']").val(),
+                            members: [
+                                {
+                                    'id': Meteor.userId(),
+                                    'username': Meteor.user().username
+                                }
+                            ]
                         } 
                         ride._id = Rides.insert(ride);
                         $('#addRideModal').modal('close');

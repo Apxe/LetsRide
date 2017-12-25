@@ -1,9 +1,7 @@
 <template name="ridesItem">
-    <div class="col-md-6">
-        <a href="{{pathFor 'ridePage'}}" class="card horizontal">
-            <div class="card-image">
-                <img src="{{image.link}}">
-            </div>
+    <div class="col-md-6 ride_card-wrapp">
+        <a href="{{pathFor 'ridePage'}}" class="card horizontal ride_card">
+            <div class="card-image ride_card-img" style="background-image: url({{image.link}});"></div>
             <div class="card-stacked">
                 <div class="card-content">
                     <span class="card-title">{{title}}</span>

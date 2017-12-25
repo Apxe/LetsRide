@@ -1,7 +1,14 @@
 .rp-title{
+    @extend .page-title;
     font-size: 26px;
     line-height: 30px;
-    margin-bottom: 0;
+    margin-bottom: 0 !important;
+}
+.rp-sub_title{
+    font-size: 18px;
+    margin-bottom: 16px;
+    font-weight: 500;
+    text-transform: uppercase;
 }
 .rp-start{
     font-size: 18px;
@@ -10,10 +17,24 @@
     line-height: 30px;
 }
 .rp-route{
-    margin-top: 16px;
+    text-align: right;
+    color: #9e9e9e;
+    margin-bottom: 16px;
+}
+.rp-map{
+    min-height: 200px;
+    height: 200px;
 }
 .rp-desc,
-.rp-requirements,
-.rp-difficulty{
+.rp-chat{
     margin-top: 32px;
 }
+    .rp-desc_item{
+        + .rp-desc_item{
+            margin-top: 16px;
+        }
+    }
+    .rp-chat_area{
+        background-color: #f1f1f1;
+        border-radius: 2px;
+    }

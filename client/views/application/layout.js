@@ -1,8 +1,16 @@
+Template.layout.onRendered(function() {
+    this.$('.modal').modal();
+});
+Template.layout.helpers({
+    isActiveMenuItem: function(route) {
+        return (route == Router.current().route.getName());
+    }
+});
 Template.layout.events({
     'click #logout-btn': function(event, template) {
         Meteor.logout();
     },
-    'click .t_menu-item_content': function(event, template) {
+    'click .sidebar-trigger': function(event, template) {
         event.preventDefault();
         $('#side_content').addClass('open');
         $('#page_content, #page_footer').addClass('hidden');
