@@ -9,6 +9,7 @@ Template.mainPage.onCreated(function() {
     }
     GoogleMaps.ready('mainMap', function(map) {
         function setMarkers(element, index, array) {
+            console.log(element);
             var latlng = element.coordinates.split(',');
             var markerImg = {
                 url: '/markers/ride_marker.png',
@@ -39,6 +40,14 @@ Template.mainPage.onCreated(function() {
             });
         }
         var rides = Rides.find();
+        rides.observeChanges({
+            added(id, user) {
+                rides.forEach(setMarkers);
+            },
+            removed() {
+                rides.forEach(setMarkers);
+            }
+        });
         rides.forEach(setMarkers);
         
 //        var src = 'https://developers.google.com/maps/documentation/javascript/examples/kml/westcampus.kml';
