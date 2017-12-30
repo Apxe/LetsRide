@@ -18,19 +18,9 @@
                                 <input class="file-path validate" type="text" placeholder="Изображение">
                             </div>
                         </div>
-                        <div class="row">
-                            <div class="col-md-6">
-                                <div class="input-field" style="margin-top: 0;">
-                                    <input id="ride-startDate" type="text" name="date">
-                                    <label for="ride-startDate">Дата старта</label>
-                                </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="input-field" style="margin-top: 0;">
-                                    <input id="ride-startTime" type="text" name="time">
-                                    <label for="ride-startTime">Время сбора</label>
-                                </div>
-                            </div> 
+                        <div class="input-field">
+                            <input id="ride-start" type="text" name="start">
+                            <label for="ride-start">Дата и время старта</label>
                         </div>
                         <div class="input-field">
                             <textarea id="ride-desc" name="description" class="materialize-textarea" rows="6"></textarea>
@@ -73,6 +63,12 @@
     </div>
     <script>
         $(document).ready(function(){
+            $('#ride-start').mask('99/99/9999 99:99', {
+                completed: function() {
+                    $('#ride-start').attr('data-empty', false);
+                }
+            });
+
             $('.form-control').on('input', function (e) {
                 $(e.currentTarget).attr('data-empty', !e.currentTarget.value);
             });

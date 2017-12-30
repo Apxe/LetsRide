@@ -29,13 +29,13 @@ Template.mainPage.onCreated(function() {
                 else {
                     modalContent = '<h5 class="ride_modal-sub_title">Описание:</h5><div class="ride_modal-desc">' +  nl2br(element.description, false) + '</div>';
                 }
-                modalContent += '<div class="ride_modal-date"><strong>Дата и время сбора:</strong><br>' + element.start + '</div>';
                 modalContent += '<div class="ride_modal-route"><strong>Маршрут&nbsp;(<a href="#">смотреть на карте</a>):</strong><br>' + element.route + '</div>';
                 if (element.requirements) {
                     modalContent += '<div class="ride_modal-requirements"><strong>Требования к участникам:</strong><br>' + nl2br(element.requirements, false) + '</div>';
                 }
                 $('#rideQViewModal .modal-title').html(element.title);
                 $('#rideQViewModal .modal-content').html(modalContent);
+                $('#rideQViewModal .ride_modal-start').html('<strong>Дата и время сбора:</strong>&nbsp;' + element.start);
                 $('#rideQViewModal').modal('open');
             });
         }
@@ -69,10 +69,5 @@ Template.mainPage.helpers({
                 zoom: 13
             };
         }
-    }
-});
-Template.mainPage.events({
-    'click #applyRideBtn': function() {
-
     }
 })

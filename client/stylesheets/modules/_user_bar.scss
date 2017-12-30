@@ -2,23 +2,9 @@
     background-size: cover;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: 16px;
     position: relative;
-    &:before{
-        content: "";
-        position: absolute;
-        display: block;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        background-color: rgba(241, 241, 241, 0.5);
-    }
-    > *{
-        position: relative;
-        z-index: 1;
-    }
 }
     .user-photo{
         border-radius: 50%;
@@ -31,7 +17,6 @@
         flex-direction: column;
         justify-content: center;
         height: 54px;
-        flex: 1 0 0; 
         padding-left: 16px;
     }
         .user-info_name{
@@ -41,16 +26,12 @@
         .user-info_sign{
             font-size: 12px;
         }
-    .user-btns{
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-    }
     .user-btn{
         border: none;
         background: transparent;
-        color: #a9a9a9;
+        color: #333;
         cursor: pointer;
+        opacity: (0.3);
         padding: 0;
         margin-left: 3px;
         font-size: 14px;
