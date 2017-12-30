@@ -6,6 +6,18 @@ Template.addRide.onRendered(function() {
             google.maps.event.trigger(GoogleMaps.maps.rideCoordinates.instance, 'resize')
         }
     });
+    this.$('[name="date"]').pickadate({
+        selectMonths: true,
+        selectYears: true,
+        today: false,
+        clear: false,
+        close: false,
+        min: new Date(),
+        closeOnSelect: true
+    });
+    this.$('[name="time"]').pickatime({
+        closeOnSelect: true
+    });
     this.$('select').material_select();
     this.$('#ride_form').validate({
         errorElement: 'span',
@@ -16,11 +28,14 @@ Template.addRide.onRendered(function() {
             },
             route: {
                 required: true
-            },
+            },  
             description: {
                 required: true
             },
-            start: {
+            date: {
+                required: true
+            },
+            time: {
                 required: true
             },
             coordinates: {
@@ -43,13 +58,13 @@ Template.addRide.onRendered(function() {
                     } else {
                         var user = Meteor.user();
                         var ride = {
-                            title: $(form).find("[name='title']").val(),
+                            title: $(form).find('[name=\'title\']').val(),
                             image: imageFile._id,
-                            route: $(form).find("[name='route']").val(),
+                            route: $(form).find('[name=\'route\']').val(),
                             description: $(form).find("[name='description']").val(),
-                            start: $(form).find("[name='start']").val(),
-                            requirements: $(form).find("[name='requirements']").val(),
-                            coordinates: $(form).find("[name='coordinates']").val(),
+                            start: $(form).find('[name=\'date\']').val() + ' ' +  $(form).find('[name=\'time\']').val(),
+                            requirements: $(form).find('[name=\'requirements\']').val(),
+                            coordinates: $(form).find('[name=\'coordinates\']').val(),
                             members: [
                                 {
                                     'id': Meteor.userId(),
