@@ -56,8 +56,16 @@
                     <img src="https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg" alt="user" class="user-photo">
                 </div>
                 <div class="user-info">
-                    <div class="user-info_name">{{currentUser.username}} <a href="{{pathFor 'editProfile'}}" class="user-btn icon-edit"></a><button id="logout-btn" class="user-btn icon-exit"></button></div>
+                    <div class="user-info_name">{{currentUser.username}} <a href="{{pathFor 'editProfile'}}" class="user-btn icon-edit"></a></div>
                     <div class="user-info_sign">Ride your life!</div>
+                </div>
+                <div class="user-btns">
+                    <div>
+                        <a href="#" class="user-btn icon-settings"></a>
+                    </div>
+                    <div>
+                        <button id="logout-btn" class="user-btn icon-exit"></button>
+                    </div>
                 </div>
             </div>
             <ul class="u_menu">
