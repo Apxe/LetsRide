@@ -1,5 +1,5 @@
 Template.ridesList.helpers({
     rides: function() {
-        return Rides.find();
+        return Rides.find({owner: Meteor.userId()});
     }
 });

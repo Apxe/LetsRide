@@ -42,7 +42,7 @@ Template.addRide.onRendered(function() {
                 required: true
             }
         },
-        submitHandler: function(form) {
+        submitHandler: function(form, event) {
             if ($(form).find("#ride_img")[0].files && $(form).find("#ride_img")[0].files[0]) {
                 const upload = Images.insert({
                     file: $(event.target).find("#ride_img")[0].files[0],
@@ -56,8 +56,8 @@ Template.addRide.onRendered(function() {
                     if (error) {
                         alert('Ошибка при загрузке: ' + error);
                     } else {
-                        var user = Meteor.user();
                         var ride = {
+                            owner: Meteor.userId(),
                             title: $(form).find('[name=\'title\']').val(),
                             image: imageFile._id,
                             route: $(form).find('[name=\'route\']').val(),
@@ -68,9 +68,11 @@ Template.addRide.onRendered(function() {
                             members: [
                                 {
                                     'id': Meteor.userId(),
-                                    'username': Meteor.user().username
+                                    'username': Meteor.user().username,
+                                    'status': 1
                                 }
-                            ]
+                            ],
+                            chat_mess: []
                         } 
                         ride._id = Rides.insert(ride);
                         $('#addRideModal').modal('close');

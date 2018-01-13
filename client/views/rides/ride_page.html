@@ -40,18 +40,30 @@
         <div class="col-sm-6 rp-chat">
             <div class="rp-sub_title">Чат с участниками:</div>
             <div id="ridePageChat" class="rp-chat_area">
-                
+                {{#each chatMessages}}
+                    <div class="rp-chat_area_mess">
+                        <img src="https://2.bp.blogspot.com/-2RewSLZUzRg/U-9o6SD4M6I/AAAAAAAADIE/voax99AbRx0/s1600/14%2B-%2B1%2B%281%29.jpg" class="rp-chat_area_mess_photo">
+                        <div class="rp-chat_area_mess_info">
+                            {{username}} 13.01.18 21:10
+                            <div class="rp-chat_area_mess_content">
+                                {{message}}
+                            </div>
+                        </div>
+                    </div>
+                {{else}}
+                    Нет сообщений, пока что.
+                {{/each}}
             </div>
             <div class="row">
-                <div class="col-md-8">
+                <div class="col-md-10">
                     <div class="input-field">
-                        <input id="message" type="text" class="validate">
-                        <label for="message">Сообщение</label>
+                        <input id="mess" type="text" class="validate">
+                        <label for="mess">Сообщение</label>
                     </div>
                 </div>
-                <div class="col-md-4">
+                <div class="col-md-2">
                     <div class="input-field">
-                        <button class="btn btn-large">Отправить</button>
+                        <button id="sendMessBtn" class="btn btn-large material-icons rp-chat_btn">send</button>
                     </div>
                 </div>
             </div>

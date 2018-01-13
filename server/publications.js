@@ -12,6 +12,9 @@ Meteor.publish('rides', function() {
 Meteor.publish('events', function() {
     return Events.find();
 });
+Meteor.publish('chat_messages', function() {
+    return ChatMessages.find();
+});
 Meteor.publish('files.images.all', function () {
     return Images.find().cursor;
 });

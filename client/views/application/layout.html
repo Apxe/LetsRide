@@ -70,11 +70,11 @@
             </div>
             <ul class="u_menu">
                 <li class="u_menu-item {{#if isActiveMenuItem 'mainPage'}} active {{/if}}">
-                    <a href="{{pathFor 'mainPage'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">map</i>Карта</a>
+                    <a href="{{pathFor 'mainPage'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">map</i>Карта</a> <a href="#" class="u_menu-item_add_link">~</a>
                 </li>
                 <li class="u_menu-sep"></li>
-                <li class="u_menu-item">
-                    <a href="#" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">mail_outline</i>Центр сообщений</a>
+                <li class="u_menu-item {{#if isActiveMenuItem 'notifications'}} active {{/if}}">
+                    <a href="{{pathFor 'notifications'}}" class="u_menu-item_content"><i class="u_menu-item_content_icon material-icons">mail_outline</i>Центр сообщений</a>
                 </li>
                 <li class="u_menu-sep"></li>
                 <li class="u_menu-item {{#if isActiveMenuItem 'ridesList'}} active {{/if}}">
